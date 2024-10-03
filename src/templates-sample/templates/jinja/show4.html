@@ -1,0 +1,20 @@
+{% extends "jinja/base2.html" %}
+
+{% block title %}render_template{% endblock %}
+
+{% block header %}<h1>値渡し：クラス型</h1>{% endblock %}
+
+{% block content %}
+    <h1>{{user}}</h1>
+    <hr>
+    <h3>「.」で取得</h3>
+    <ul>
+        <li>{{ user.name }}</li>
+        <li>{{ user.age }}</li>
+    </ul>
+    <h3>「[]」で取得</h3>
+    <ul>
+        <li>{{ user['name'] }}</li>
+        <li>{{ user['age'] }}</li>
+    </ul>
+{% endblock %}

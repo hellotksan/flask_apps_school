@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task List</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <a href="{{ url_for('new_task') }}" class="button">新規作成</a>
+        <hr>
+        <h2 class="no-complete">未完了：課題一覧</h2>
+        <ul>
+            {% for task in uncompleted_tasks %}
+            <div>
+                <p>{{ task.content }}</p>
+                <form method="post" action="{{ url_for('complete_task', task_id=task.id) }}">
+                    <button type="submit" class="complete-button">完了</button>
+                </form>
+            </div>
+            {% endfor %}
+        </ul>
+        <hr>
+        <h2 class="complete">完了：課題一覧</h2>
+        <ul>
+            {% for task in completed_tasks %}
+            <div>
+                <p>{{ task.content }}</p>
+                <form method="post" action="{{ url_for('uncomplete_task', task_id=task.id) }}">
+                    <button type="submit" class="uncomplete-button">戻す</button>
+                </form>
+            </div>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ユーザー情報</title>
+</head>
+<body>
+    <h1>こんにちは！</h1>
+    <h2>別サービスから情報を取得しました</h2>
+    <hr>
+    <h2>{{ user.name }}</h2>
+    <p>Email: {{ user.email }}</p>
+    <p>電話: {{ user.phone }}</p>
+    <hr>
+    <a href="{{ url_for('shwo_login')}}">ログイン画面へ戻る</a>
+</body>
+</html>

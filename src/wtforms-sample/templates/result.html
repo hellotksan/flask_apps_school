@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <h1>WTForm：結果</h1>
+{% endblock %}
+
+{% block content %}
+    <ul>
+        <li>名前: {{form.name.data}}</li>
+        <li>年齢: {{form.age.data}}</li>
+        <li>パスワード: {{form.password.data}}</li>
+        <li>確認用: {{form.confirm_password.data}}</li>
+        <li>Email: {{form.email.data}}</li>
+        <li>生年月日: {{form.birthday.data}}</li>
+        <li>性別: {{form.gender.data}}</li>
+        <li>地域: {{form.area.data}}</li>
+        <li>既婚: {{form.is_married.data}}</li>
+        <li>備考: {{form.note.data}}</li>
+    </ul>
+{% endblock %}

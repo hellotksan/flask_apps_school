@@ -1,0 +1,133 @@
+/* ページ全体の設定 */
+.container {
+    /* 背景色を#f8f8f8（薄いグレー） */
+    background-color: #f8f8f8;
+    /* 最大幅を800pxに制限 */
+    max-width: 800px;
+    /* 上下左右に20pxのパディング（内側の余白）を設定 */     
+    padding: 20px;
+    /* フォントファミリー（文字の種類）をArialとsans-serifに設定 */
+    font-family: Arial, sans-serif;
+}
+
+/* ヘッダー（大見出し）のスタイル設定 */
+h1 {
+    /* 文字色を#333（ダークグレー）に設定 */
+    color: #333;
+    /* テキストを中央寄せ */
+    text-align: center;
+    /* 上部のマージン（外側の余白）を50pxに設定 */
+    margin-top: 50px;
+}
+
+/*  ラベルのフォントサイズを20pxに設定 */
+label {
+    font-size: 20px;
+}
+
+/* 未完了のヘッダー */
+.no-complete {
+    /* 色を緑に設定 */
+    color: green;
+}
+
+/* 完了のヘッダー */
+.complete {
+    /* 色を赤に設定 */
+    color:red;
+}
+
+/* ボタンのスタイル */
+.button {
+    /* 背景色を緑 */
+    background-color: blue;
+    /* ボーダーなし */
+    border: none;
+    /* テキストの色を白 */
+    color: white;
+    /* パディングを10px 20pxに設定 */
+    padding: 10px 20px;
+    /* テキストを中央寄せ */
+    text-align: center;
+    /* テキストの装飾なし */
+    text-decoration: none;
+    /* 表示をインラインブロック */
+    display: inline-block;
+    /* 文字サイズ */
+    font-size: 14px;
+    /* 要素の下側に20ピクセルのスペース */
+    margin-bottom: 20px;
+}
+
+/* 新規作成ボタンのスタイル */
+a.button {
+    /* 表示をブロック */
+    display: block;
+    /* 幅を200pxに設定 */
+    width: 200px;
+}
+
+/* 完了・戻すボタンのスタイル */
+.complete-button, .uncomplete-button {
+     /* 背景色を緑 */
+    background-color: green;
+    /* ボーダーなし */
+    border: none;
+    /* テキストの色を白 */
+    color: white;
+    /* パディングを5px 10pxに設定 */
+    padding: 5px 10px;
+    /* テキストを中央寄せ */
+    text-align: center;
+    /* テキストの装飾なし */
+    text-decoration: none;
+    /* 表示をインラインブロック */
+    display: inline-block;
+    /* 文字サイズ */
+    font-size: 14px;
+}
+
+.uncomplete-button {
+     /* 背景色を赤 */
+    background-color: red;
+}
+
+/* 課題一覧・完了した課題一覧のスタイル */
+/* リストのスタイルを設定 */
+ul {
+    /* リストスタイルなし */
+    list-style-type: none;
+    /* マージンとパディングを0 */
+    margin: 0;
+    padding: 0;
+}
+
+/* div要素のスタイル */
+div {
+    /* 背景色を白 */
+    background-color: white;
+    /* ボーダーを1pxのソリッド（実線）ライトグレー */
+    border: 1px solid #ccc;
+    /* 要素の下側に外側の余白（マージン）を10pxに設定 */
+    margin-bottom: 10px;
+    /* 要素の全ての辺（上、右、下、左）に対して、内側に10pxに設定 */
+    padding: 10px;
+}
+
+/* 段落のフォントサイズを20pxに設定 */
+p {
+    font-size: 20px;
+}
+
+.text-input {
+    /* 要素の全ての辺（上、右、下、左）に対して、内側に10pxに設定 */
+    padding: 10px;
+    /* 要素の幅を親要素の80%に設定 */
+    width: 80%;
+    /* 要素のボーダーの角を丸くするために使用 */
+    border-radius: 5px;
+    /* ボーダーを1pxのソリッド（実線）ライトグレー */
+    border: 1px solid #ccc;
+    /* 要素の全ての辺（上、右、下、左）に対して、内側に10pxに設定 */
+    margin: 10px;
+}

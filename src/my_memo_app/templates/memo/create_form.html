@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="my-4">新しいメモを作成</h1>
+    {% from "_formhelpers.html" import render_field %}
+    <form method="POST" action="{{ url_for('memo.create') }}" novalidate>
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            {{ render_field(form.title, class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ render_field(form.content, class="form-control", rows=5) }}
+        </div>
+        <div class="mb-3">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+
+    <a href="{{ url_for('memo.index') }}" class="btn btn-secondary mt-2">戻る</a>
+{% endblock %}

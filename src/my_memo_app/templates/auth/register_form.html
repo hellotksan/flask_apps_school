@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">サインアップ</h1>
+    {% from "_formhelpers.html" import render_field %}
+    <form method="POST" action="{{ url_for('auth.register') }}" novalidate>
+        {{ form.hidden_tag() }}
+        {{ render_field(form.username, class="form-control") }}
+        {{ render_field(form.password, class="form-control") }}
+        <br>
+        {{ form.submit(class="btn btn-primary") }}
+    </form>
+
+    <p class="my-3">すでにアカウントをお持ちの場合は、
+        <a href="{{ url_for('auth.login') }}">こちら</a>
+        からログインしてください。
+    </p>
+</div>
+{% endblock %}

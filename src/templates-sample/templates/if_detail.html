@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}DETAIL{% endblock %}
+
+{% block header %}<h1>（動的）商品詳細：画面</h1>{% endblock %}
+
+{% block content %}
+<table border="1">
+    {% for item in items %}
+        {% if show_id==item.id %}
+            <tr><td>商品ID：</td><td>{{item.id}}</td></tr>
+            <tr><td>商品名：</td><td>{{item.name}}</td></tr>
+        {% endif %}
+    {% endfor %}
+</table>
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
+    <a href="{{ url_for('show_for_list')}}">（動的）一覧画面へ</a>
+{% endblock %}

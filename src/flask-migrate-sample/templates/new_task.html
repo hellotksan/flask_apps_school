@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Task</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>新規課題</h1>
+        <form method="POST" action="{{ url_for('new_task') }}">
+            <label for="content">課題内容:</label><br>
+            <input type="text" id="content" name="content" class="text-input"><br>
+            <input type="submit" value="追加" class="button">
+        </form>
+    </div>
+</body>
+</html>

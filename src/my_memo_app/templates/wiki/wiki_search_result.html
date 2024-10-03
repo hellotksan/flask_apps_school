@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <div class="my-4">
+        {% if error %}
+            <h2>{{ error }}</h2>
+        {% else %}
+            <h2>検索結果： "{{ keyword }}"</h2>
+            <p>{{ summary }}... <a href="{{ url }}" target="_blank">Read more</a></p>
+        {% endif %}
+    </div>
+    <!-- メモに追加ボタン -->
+    <form action="{{ url_for('memo.create_from_search') }}" method="post" class="mb-3">
+        <input type="hidden" name="title" value="{{ keyword }}">
+        <input type="hidden" name="content" value="{{ summary }}">
+        <input type="submit" value="メモに追加" class="btn btn-primary">
+    </form>
+    <a href="{{ url_for('memo.index') }}" class="btn btn-secondary">戻る</a>
+</div>
+{% endblock %}

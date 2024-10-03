@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}タイトル{% endblock %}</title>
+</head>
+<body>
+    {% block header %}ヘッダー{% endblock %}
+    {% block content %}内容{% endblock %}
+    <hr>
+    
+    <!-- ▼▼▼【リスト3.10】▼▼▼ -->
+    {% block footer %}<a href="{{ url_for('index')}}">TOP画面へ</a>{% endblock %}
+    <!-- ▲▲▲【リスト3.10】▲▲▲ -->
+</body>
+</html>
