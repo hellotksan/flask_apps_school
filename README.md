@@ -22,28 +22,53 @@ pip install -r requirements.txt
 
 このプロジェクトには、以下のようなサンプルが含まれています。
 
-1. **Flask でハローワールドを作成する**
+Chapter 1.
 
-   - [src/hello-sample](src/hello-sample)
+Chapter 2. **Flask に触れてみよう**
 
-2. **ルーティングについて学ぶ**
+- Hello World with Flask
 
-   - デコレーターの例: [src/decorator_sample.py](src/decorator_sample.py)
-   - 基本的なルーティング: [src/routing-sample](src/routing-sample)
+  - [src/hello-sample](src/hello-sample)
 
-3. **動的ルーティングについて学ぶ**
+- ルーティングについて
 
-   - [src/dynamicrouting-sample](src/dynamicrouting-sample)
+  - デコレーターの例: [src/decorator_sample.py](src/decorator_sample.py)
+  - 基本的なルーティング: [src/routing-sample](src/routing-sample)
 
-4. **jinja2 テンプレートの利用**
+- 動的ルーティング
 
-   - フィルターやエラーハンドリングの例: [src/templates-sample](src/templates-sample)
+  - [src/dynamicrouting-sample](src/dynamicrouting-sample)
 
-5. **フォームの使用方法**
+Chapter 3. **jinja2 に触れてみよう**
 
-   - [src/form-sample](src/form-sample)
+- [src/templates-sample](src/templates-sample)
 
-6. **WTForms を使ってみよう**
-   - [src/wtforms-sample](src/wtforms-sample)
+Chapter 4. **フィルターとエラーハンドリングに触れてみよう**
+
+- [src/templates-sample](src/templates-sample)
+
+Chapter 5. **Form に触れてみよう**
+
+- フォームの使用方法
+
+  - [src/form-sample](src/form-sample)
+
+- WTForms
+
+  - [src/wtforms-sample](src/wtforms-sample)
+
+- Flask-WTF
+
+  - [src/flask-wtf-sample](src/flask-wtf-sample)
+
+Chapter 6. **データベースに触れてみよう**
+
+- データベースの作成について
+
+  - [src/sqlite3-sample](src/sqlite3-sample)
+
+- ORM
+
+  - [src/sqlalchemy-sample](src/sqlalchemy-sample)
 
 ---
