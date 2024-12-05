@@ -3,18 +3,14 @@ from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-# ==================================================
-# DBファイル作成
-# ==================================================
+
 base_dir = os.path.dirname(__file__)
 database = 'sqlite:///' + os.path.join(base_dir, 'data.sqlite')
-# データベースエンジンを作成
 db_engine = create_engine(database, echo=True)
 Base = declarative_base()
 
-# ==================================================
+
 # モデル
-# ==================================================
 # 商品
 class Item(Base):
     # テーブル名
@@ -26,6 +22,7 @@ class Item(Base):
     # 価格
     price = Column(Integer, nullable=False)
 
+
 # 店舗
 class Shop(Base):
     # テーブル名
@@ -34,6 +31,7 @@ class Shop(Base):
     shop_id = Column(Integer, primary_key=True)
     # 店舗名
     shop_name = Column(String(255), nullable=False, unique=True)
+
 
 # 在庫
 class Stock(Base):
@@ -46,9 +44,8 @@ class Stock(Base):
     # 在庫
     stock = Column(Integer)
 
-# ==================================================
+
 # テーブル操作
-# ==================================================
 print('（１）テーブルを削除してから作成')
 Base.metadata.drop_all(db_engine)
 Base.metadata.create_all(db_engine)
@@ -83,9 +80,8 @@ session.commit()
 
 print('（３）データ参照：実行')
 print('■：内部結合')
-join_3tables_all = session.query(Shop, Item.item_name, Stock.stock).join\
-    (Stock, Shop.shop_id == Stock.shop_id).join\
-    (Item, Item.item_id == Stock.item_id).all()
+join_3tables_all = session.query(Shop, Item.item_name, Stock.stock).join(
+    Stock, Shop.shop_id == Stock.shop_id).join(Item, Item.item_id == Stock.item_id).all()
 
 for row in join_3tables_all:
     print(f'店：{row.Shop.shop_name} -> 商品名：{row.item_name} -> 在庫数：{row.stock}')
@@ -93,17 +89,18 @@ for row in join_3tables_all:
 print('■' * 100)
 
 print('■：外部結合')
-outerjoin_2tables_all = session.query(Item, Stock.stock).outerjoin\
-    (Stock, Item.item_id == Stock.item_id).all()
+outerjoin_2tables_all = session.query(Item, Stock.stock).outerjoin(
+    Stock, Item.item_id == Stock.item_id).all()
 
 for row in outerjoin_2tables_all:
     print(f'商品名：{row.Item.item_name} -> 在庫数：{row.stock}')
 
-# ▼▼▼ リスト 6-6 追加 ▼▼▼
 # filter
-target_A = session.query(Item).filter(Item.item_id == 1).filter(Item.price == 100).first() 
-print(f'商品ID：{target_A.item_id} -> 商品名：{target_A.item_name} -> 金額：{target_A.price}')
+target_A = session.query(Item).filter(
+    Item.item_id == 1).filter(Item.price == 100).first()
+print(
+    f'商品ID: {target_A.item_id} -> 商品名：{target_A.item_name} -> 金額：{target_A.price}')
 # filter_by
-target_B = session.query(Item).filter_by(item_id=1, price=100).first() 
-print(f'商品ID：{target_B.item_id} -> 商品名：{target_B.item_name} -> 金額：{target_B.price}')
-# ▲▲▲ リスト 6-6 追加 ▲▲▲
+target_B = session.query(Item).filter_by(item_id=1, price=100).first()
+print(
+    f'商品ID: {target_B.item_id} -> 商品名：{target_B.item_name} -> 金額：{target_B.price}')

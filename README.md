@@ -71,4 +71,18 @@ Chapter 6. **データベースに触れてみよう**
 
   - [src/sqlalchemy-sample](src/sqlalchemy-sample)
 
+- 結合を使おう
+
+  - [src/sqlalchemy-join-sample](src/sqlalchemy-join-sample)
+
+Chapter 7. **Flask でデータベースを使おう**
+
+- Flask-SQLAlchemy を使おう
+
+  - [src/flask-sqlalchemy-sample](src/flask-sqlalchemy-sample)
+
+- Flask-Migrate を使おう
+
+  - [src/flask-migrate-sample](src/flask-migrate-sample)
+
 ---

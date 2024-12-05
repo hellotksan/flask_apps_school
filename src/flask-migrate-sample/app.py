@@ -3,15 +3,9 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
-# ==================================================
-# インスタンス生成
-# ==================================================
+
 app = Flask(__name__)
 
-# ==================================================
-# Flaskに対する設定
-# ==================================================
-import os
 # 乱数を設定
 app.config['SECRET_KEY'] = os.urandom(24)
 base_dir = os.path.dirname(__file__)
@@ -24,37 +18,37 @@ db = SQLAlchemy(app)
 # ★「flask_migrate」を使用できる様にする
 Migrate(app, db)
 
-#==================================================
+
 # モデル
-#==================================================
-# 課題
 class Task(db.Model):
     # テーブル名
     __tablename__ = 'tasks'
-    
+
     # 課題ID
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     # 内容
     content = db.Column(db.String(200), nullable=False)
     # 完了フラグ
-    is_completed = db.Column(db.Boolean, default=False)    
+    is_completed = db.Column(db.Boolean, default=False)
 
     # 表示用
     def __str__(self):
-        return f'課題ID：{self.id} 内容：{self.content}'
+        return f'課題ID: {self.id} 内容: {self.content}'
 
-# ==================================================
+
 # ルーティング
-# ==================================================
 # 一覧
 @app.route('/')
 def index():
     # 未完了課題を取得
-    uncompleted_tasks  = Task.query.filter_by(is_completed=False).all()
+    uncompleted_tasks = Task.query.filter_by(is_completed=False).all()
     # 完了課題を取得
-    completed_tasks  = Task.query.filter_by(is_completed=True).all()
-    return render_template('index.html', uncompleted_tasks= uncompleted_tasks, 
+    completed_tasks = Task.query.filter_by(is_completed=True).all()
+
+    return render_template('index.html',
+                           uncompleted_tasks=uncompleted_tasks,
                            completed_tasks=completed_tasks)
+
 
 # 登録
 @app.route('/new', methods=['GET', 'POST'])
@@ -73,6 +67,7 @@ def new_task():
     # GET
     return render_template('new_task.html')
 
+
 # 完了
 @app.route('/tasks/<int:task_id>/complete', methods=['POST'])
 def complete_task(task_id):
@@ -82,6 +77,7 @@ def complete_task(task_id):
     task.is_completed = True
     db.session.commit()
     return redirect(url_for('index'))
+
 
 # 未完了
 @app.route('/tasks/<int:task_id>/uncomplete', methods=['POST'])
@@ -93,8 +89,6 @@ def uncomplete_task(task_id):
     db.session.commit()
     return redirect(url_for('index'))
 
-# ==================================================
-# 実行
-# ==================================================
+
 if __name__ == '__main__':
     app.run()
