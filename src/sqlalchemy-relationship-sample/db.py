@@ -3,19 +3,14 @@ from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
 
-# ==================================================
-# DBファイル作成
-# ==================================================
+
 base_dir = os.path.dirname(__file__)
 database = 'sqlite:///' + os.path.join(base_dir, 'data.sqlite')
-# データベースエンジンを作成
 db_engine = create_engine(database, echo=True)
 Base = declarative_base()
 
-# ==================================================
-# モデル
-# ==================================================
-# 部署
+
+# 部署モデル
 class Department(Base):
     # テーブル名
     __tablename__ = 'departments'
@@ -24,13 +19,14 @@ class Department(Base):
     # 部署名
     name = Column(String, nullable=False, unique=True)
     # リレーション: １対多
-    employees = relationship("Employee", back_populates = "department")
-        
+    employees = relationship("Employee", back_populates="department")
+
     # 表示用関数
     def __str__(self):
-        return f"部署ID：{self.id}, 部署名：{self.name}"
+        return f"部署ID: {self.id}, 部署名: {self.name}"
 
-# 従業員
+
+# 従業員モデル
 class Employee(Base):
     # テーブル名
     __tablename__ = 'employees'
@@ -41,15 +37,14 @@ class Employee(Base):
     # ForeignKeyには「テーブル名.カラム名」を指定
     department_id = Column(Integer, ForeignKey('departments.id'))
     # リレーション: １対１
-    department = relationship("Department", back_populates = "employees", uselist=False)
-        
+    department = relationship(
+        "Department", back_populates="employees", uselist=False)
+
     # 表示用関数
     def __str__(self):
         return f"従業員ID：{self.id}, 従業員名：{self.name}"
 
-# ==================================================
-# テーブル操作
-# ==================================================
+
 print('（１）テーブルを削除してから作成')
 Base.metadata.drop_all(db_engine)
 Base.metadata.create_all(db_engine)
@@ -84,15 +79,15 @@ session.commit()
 
 print('（３）データ参照：実行')
 print('■：Employeeの参照')
-target_emp = session.query(Employee).filter_by(id=1).first() 
+target_emp = session.query(Employee).filter_by(id=1).first()
 print(target_emp)
 print('■：Employeeに紐付いたDepartmentの参照')
-print(target_emp.department) 
+print(target_emp.department)
 
 print('■' * 100)
 
 print('■：Departmentの参照')
-target_dept = session.query(Department).filter_by(id=1).first() 
+target_dept = session.query(Department).filter_by(id=1).first()
 print(target_dept)
 print('■：Departmentに紐付いたのEmployeeの参照')
 for emp in target_dept.employees:

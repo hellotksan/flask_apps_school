@@ -3,20 +3,14 @@ from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
 
-# ==================================================
-# DBファイル作成
-# ==================================================
+
 base_dir = os.path.dirname(__file__)
 database = 'sqlite:///' + os.path.join(base_dir, 'data.sqlite')
-# データベースエンジンを作成
 db_engine = create_engine(database, echo=True)
 Base = declarative_base()
 
-# ▼▼▼ リスト 6-7 修正 ▼▼▼
-# ==================================================
-# モデル
-# ==================================================
-# 商品
+
+# 商品モデル
 class Item(Base):
     # テーブル名
     __tablename__ = 'items'
@@ -28,8 +22,9 @@ class Item(Base):
     price = Column(Integer, nullable=False)
     # リレーション
     shops = relationship("Shop", secondary="stocks", back_populates="items")
-    
-# 店舗
+
+
+# 店舗モデル
 class Shop(Base):
     # テーブル名
     __tablename__ = 'shops'
@@ -39,8 +34,9 @@ class Shop(Base):
     shop_name = Column(String(255), nullable=False, unique=True)
     # リレーション
     items = relationship("Item", secondary="stocks", back_populates="shops")
-    
-# 在庫
+
+
+# 在庫モデル
 class Stock(Base):
     # テーブル名
     __tablename__ = 'stocks'
@@ -50,11 +46,8 @@ class Stock(Base):
     item_id = Column(Integer, ForeignKey('items.item_id'), primary_key=True)
     # 在庫
     stock = Column(Integer)
-# ▲▲▲ リスト 6-7 修正 ▲▲▲
 
-# ==================================================
-# テーブル操作
-# ==================================================
+
 print('（１）テーブルを削除してから作成')
 Base.metadata.drop_all(db_engine)
 Base.metadata.create_all(db_engine)
@@ -87,7 +80,6 @@ stock06 = Stock(shop_id=2, item_id=3, stock=300)
 session.add_all([stock01, stock02, stock03, stock04, stock05, stock06])
 session.commit()
 
-# ▼▼▼ リスト 6-8 追加 ▼▼▼
 print('（３）データ参照：実行')
 print('■：Shopの参照')
 target_shop = session.query(Shop).filter_by(shop_id=1).first()
@@ -96,7 +88,7 @@ print('■：リレーションから商品の参照')
 # target_shopが持つ商品情報を取得する
 for item in target_shop.items:
     # itemに対応する在庫情報を取得する
-    stock = session.query(Stock).filter_by(shop_id=target_shop.shop_id, item_id=item.item_id).first()
+    stock = session.query(Stock).filter_by(
+        shop_id=target_shop.shop_id, item_id=item.item_id).first()
     # 在庫数を表示する
     print(f"商品名：{item.item_name} -> 在庫数: {stock.stock}")
-# ▲▲▲ リスト 6-8 追加 ▲▲▲
