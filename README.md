@@ -6,6 +6,10 @@
 
 - 参照元リンク: [https://gihyo.jp/assets/files/book/2023/978-4-297-13641-3/download/Sample.zip](https://gihyo.jp/assets/files/book/2023/978-4-297-13641-3/download/Sample.zip)
 
+## 仮想環境での実行
+
+仮想環境での実行を推奨します。手順については、[docs/how_to_run_on_venv.md](docs/how_to_run_on_venv.md)を参照してください。
+
 ## Python モジュールのインストール
 
 必要なモジュールは次のコマンドでインストールしてください。
@@ -14,14 +18,6 @@
 pip install -r requirements.txt
 ```
 
-## 仮想環境での実行
-
-仮想環境での実行を推奨します。手順については、[docs/how_to_run_on_venv.md](docs/how_to_run_on_venv.md)を参照してください。
-
 ## src フォルダの内容
 
 src フォルダの内容については、[docs/about_src.md](docs/about_src.md)を参照してください。
-
-## 課題リスト
-
-課題については、[docs/about_mission.md](docs/about_mission.md)を参照してください。

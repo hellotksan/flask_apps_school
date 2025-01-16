@@ -64,3 +64,23 @@ Chapter 7. **Flask でデータベースを使おう**
 - Flask-Migrate を使おう
 
   - [src/flask-migrate-sample](src/flask-migrate-sample)
+
+Chapter 8. **開発に役立つ便利機能について知ろう**
+
+- Blueprint を活用しよう
+
+  - [src/blueprint-sample](src/blueprint-sample)
+
+- グローバル変数「g」を活用しよう
+
+  - [src/global-g-sample](src/global-g-sample)
+
+- デバッグモードを活用しよう
+
+  - [src/flask-debug-sample](flask-debug-sample)
+
+Chapter 9. **Flask アプリケーションを作ろう**
+
+- 「CRUD 機能を持つメモアプリ」の作成
+
+  - [src/my_memo_app](src/my_memo_app)
